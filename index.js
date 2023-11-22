@@ -2,7 +2,7 @@
 const square = document.getElementById('square');
 let positionX = 0;
 let positionY = 0;
-const moveAmount = 10;
+const moveAmount = 100;
 
 function handleKeyPress(event) {
   switch (event.key) {
