@@ -1,8 +1,9 @@
+import { intervalID, moveDown } from "./matrix";
 
 const square = document.getElementById('square');
 let positionX = 0;
 let positionY = 0;
-const moveAmount = 100;
+const moveAmount = 10;
 
 function handleKeyPress(event) {
   switch (event.key) {
@@ -30,4 +31,5 @@ function moveSquare(x, y) {
 }
 
 // Adiciona um ouvinte de evento para teclas de seta
-document.addEventListener('keydown', handleKeyPress);
+document.addEventListener('keydown', handleKeyPress);intervalID = setInterval(moveDown, 1000);
+

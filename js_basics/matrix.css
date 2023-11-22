@@ -2,13 +2,14 @@
 
 .body{
     margin: 0;
-    display: fixed;
+    display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: f0f0f0;
+    background-color: rgb(188, 188, 71);
 }
 
+/*
 .center{
     text-align: center;
 }
@@ -35,4 +36,20 @@
 .fixed{
     background-color: red;
   }
-  
+*/
+
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(5,100px);
+    grid-template-rows: repeat(4,100px);
+    gap: 0;
+    border: 2px solid #333;
+    padding: 10px;
+}
+
+.grid-item{
+    width: 100px;
+    height: 100px;
+    border: 1px solid #8f3737;
+    box-sizing: border-box;
+}
