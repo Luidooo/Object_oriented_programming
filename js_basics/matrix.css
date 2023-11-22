@@ -1,0 +1,38 @@
+/* style.css */
+
+.body{
+    margin: 0;
+    display: fixed;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: f0f0f0;
+}
+
+.center{
+    text-align: center;
+}
+
+.matrix {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(20, 50px);
+    gap: 5px;
+    border: 2px solid #333;
+    width: 520px;
+    height: 1020px;
+  }
+  
+.object {
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    grid-column: 5;
+    grid-row: 1;
+    transition: transform 0.3s ease-in-out;
+  }
+
+.fixed{
+    background-color: red;
+  }
+  
