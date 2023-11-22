@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const width = 10
   let nextRandom = 0
   let timerId
+  let velo = 1
   let score = 0
   const colors = [
     'orange',
@@ -85,11 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
       moveRight()
     } else if (e.keyCode === 40) {
       moveDown()
-    } else if (e.keyCode === 32) {
-      moveDown()
-      moveDown()
-      moveDown()
-      moveDown()
+    } else if (e.keyCode === 13) {
+    /* 
+      do{
+        let i=0; 
+        moveDown()
+      i++
+      }
+      while(i<5)
+      */
+     moveDown()
+     moveDown()
+     moveDown()
+     moveDown()
+     moveDown()
+     moveDown()
     }
 
   }
@@ -101,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw()
     freeze()
   }
+
 
   function freeze() {
     if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
@@ -197,6 +209,13 @@ document.addEventListener('DOMContentLoaded', () => {
       displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom]
     })
   }
+  
+  function addVelo() {
+   
+    
+    velo = 1000
+    return velo
+  }
 
   startBtn.addEventListener('click', () => {
     if (timerId) {
@@ -204,9 +223,10 @@ document.addEventListener('DOMContentLoaded', () => {
       timerId = null
     } else {
       draw()
-      timerId = setInterval(moveDown, 700)
+      timerId = setInterval(moveDown, addVelo())
       nextRandom = Math.floor(Math.random()*theTetrominoes.length)
       displayShape()
+      
     }
   })
 
