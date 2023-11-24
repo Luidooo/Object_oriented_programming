@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const width = 10
   let nextRandom = 0
   let timerId
-  let velo = 1
+  let velo = 1000
   let score = 0
   const colors = [
     'orange',
@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (e.keyCode === 40) {
       moveDown()
     } else if (e.keyCode === 13) {
-    /* 
+    /*
       do{
-        let i=0; 
+        let i=0;
         moveDown()
       i++
       }
@@ -209,11 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
       displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom]
     })
   }
-  
-  function addVelo() {
-   
-    
-    velo = 1000
+
+  function addVelo(aux) {
+    aux == 0 ? aux+=1 : aux*2;
+    velo = 1000/(aux)
     return velo
   }
 
@@ -223,10 +222,11 @@ document.addEventListener('DOMContentLoaded', () => {
       timerId = null
     } else {
       draw()
-      timerId = setInterval(moveDown, addVelo())
+        timerId = setInterval(moveDown, velo/*addVelo(score)*/)
+      console.log('velo = ' + velo)
       nextRandom = Math.floor(Math.random()*theTetrominoes.length)
       displayShape()
-      
+
     }
   })
 
@@ -236,6 +236,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if(row.every(index => squares[index].classList.contains('taken'))) {
         score +=10
+        velo = velo - 100
+        console.log('score = ' + score)
+        timerId = setInterval(moveDown, velo/* addVelo(score)*/)
+        console.log('velo = ' + velo)
         scoreDisplay.innerHTML = score
         row.forEach(index => {
           squares[index].classList.remove('taken')
